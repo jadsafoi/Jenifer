@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vacaciones</title>
+</head>
+<link rel="stylesheet" href="style.css">
+<body>
+<center>
+    <header>Mis Vacaciones</header>
+    
+    <nav>
+        <ul>
+            <li><a href="#Semana1">Semana 1</a></li>
+            <li><a href="#Semana2">Semana 2</a></li>
+            <li><a href="#Vacaciones">Vacaciones perfectas</a></li>
+        </ul>
+    </nav>
+
+    <section>
+        <br><br><br>
+
+        <H2 id="Semana1">Fui a Tecolutla </H2>
+
+        <p>Bimos un espectaculo muy tradicional en este lugar:</p>
+        <video src="Primera semana/Video2.mp4" controls></video>
+        <p>Despues nos fuimos a visitar a la playa: </p>
+        <video src="Primera semana/Video1.mp4" controls></video>
+        <p>Nos tomamos algunas fotos</p>
+        <img src="Primera semana/Imagen1.jpg" alt="" class="IMG">
+        <br>
+        <img src="Primera semana/Imagen2.jpg" alt="" class="IMG">
+        <br>
+        <img src="Primera semana/Imagen4.jpg" alt="" class="IMG">
+
+    </section>
+
+    <article>
+
+        <h2 id="Semana2">Visitamos a mi familia:</h2>
+        <p>Grabamos algunas cosas en la casa de mi familiar : </p>
+        <video src="Segunda Semana/Video1.mp4"></video>
+        <br>
+        <video src="Segunda Semana/Video2.mp4" controls></video>
+        <br>
+        <p>Me cai y me tubieron que sobar , estas son algunas de las fotos </p>
+        <img src="Segunda Semana/Imagen1.jpeg" alt="" class="IMG">
+        <br>
+        <img src="Segunda Semana/Imagen2.jpeg" alt="" class="IMG">
+        <br>
+
+    </article>
+
+
+    <aside>
+
+        <h2 id="Vacaciones">A donde quiero ir en mis proximas Vacaciones</h2>
+
+        <div class="carrusel-container">
+  <div class="carrusel" id="carrusel">
+    <div class="slide activo">
+      <a href="Loscabos.html"><img src="Vacaciones/Loscabos.jpg" alt="Entrada del Museo del Mamut en Santa Lucía" /></a>
+      <div class="texto">
+        <h3>Cabos</h3>
+        <p>Cabos</p>
+      </div>
+    </div>
+    <div class="slide">
+      <a href="Mazaclan.html"><img src="https://th.bing.com/th/id/R.42392388c4d13073339cc4d558f3b074?rik=GE%2fFospw0m0i2w&riu=http%3a%2f%2fconocemazatlan.com%2fwp-content%2fuploads%2f2017%2f12%2fHoliday-inn-mazatlan.jpg&ehk=ahGJ7IEq9%2bdKvZNM3%2fPXCg9BGbQ2pThEM3c7n86wKGk%3d&risl=&pid=ImgRaw&r=0" alt="Exposición Famex" /></a>
+      <div class="texto">
+        <h3>Mazaclan</h3>
+        <p>Mazaclan</p>
+      </div>
+    </div>
+    <div class="slide">
+      <a href="Paris.html"><img src="Vacaciones/Paris.webp" alt="Vista del aviario Ehecatl" /></a>
+      <div class="texto">
+        <h3>Paris francia</h3>
+        <p>Paris</p>
+      </div>
+    </div>
+  </div>
+
+  <button class="nav prev" id="prev" aria-label="Anterior">&#10094;</button>
+  <button class="nav next" id="next" aria-label="Siguiente">&#10095;</button>
+
+  <div class="indicadores" id="indicadores"></div>
+</div>
+
+<script >
+
+  const carrusel = document.getElementById('carrusel');
+const slides = carrusel.querySelectorAll('.slide');
+const indicadores = document.getElementById('indicadores');
+const btnPrev = document.getElementById('prev');
+const btnNext = document.getElementById('next');
+
+let index = 0;
+
+slides.forEach((_, i) => {
+  const punto = document.createElement('div');
+  punto.classList.add('punto');
+  if (i === 0) punto.classList.add('activo');
+  punto.addEventListener('click', () => mostrarSlide(i));
+  indicadores.appendChild(punto);
+});
+
+const actualizarCarrusel = () => {
+  carrusel.style.transform = `translateX(-${index * 100}%)`;
+  indicadores.querySelectorAll('.punto').forEach((p, i) =>
+    p.classList.toggle('activo', i === index)
+  );
+};
+
+const mostrarSlide = (i) => {
+  index = i;
+  actualizarCarrusel();
+};
+
+btnNext.addEventListener('click', () => {
+  index = (index + 1) % slides.length;
+  actualizarCarrusel();
+});
+
+btnPrev.addEventListener('click', () => {
+  index = (index - 1 + slides.length) % slides.length;
+  actualizarCarrusel();
+});
+
+</script>
+    </aside>
+</center>
+</body>
+</html>
